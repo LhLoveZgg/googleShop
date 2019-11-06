@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import "./assets/style/reset.css";
 import "./assets/style/border.css";
+import "./assets/style/font-awesome.css"
 import router from './router'
 
 Vue.config.productionTip = false
