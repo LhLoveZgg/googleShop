@@ -49,6 +49,78 @@
         <div class="main col-md-8">
           <h1>WHAT WE DO</h1>
           <div class="line"></div>
+          <div
+            class="dec"
+          >DOING MACHINE is specialized in design, manufacturing, engineering and exporting of industrial dryers, impact mills, powder mixers, wet granulators and conveying equipements.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="advantage">
+      <div class="item">
+        <div class="itemInfo">
+          <div class="top">
+            <div class="num">1</div>
+            <div class="ad">
+              <p>ADVANTAGE</p>
+              <span>TEST CENTER</span>
+            </div>
+          </div>
+          <div
+            class="bottom"
+          >We can test your product for free to determine the optimal process for final design.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="itemInfo">
+          <div class="top">
+            <div class="num">2</div>
+            <div class="ad">
+              <p>ADVANTAGE</p>
+              <span>TEST CENTER</span>
+            </div>
+          </div>
+          <div
+            class="bottom"
+          >We can test your product for free to determine the optimal process for final design.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="itemInfo">
+          <div class="top">
+            <div class="num">3</div>
+            <div class="ad">
+              <p>ADVANTAGE</p>
+              <span>TEST CENTER</span>
+            </div>
+          </div>
+          <div
+            class="bottom"
+          >We can test your product for free to determine the optimal process for final design.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="customer">
+      <div class="container">
+        <div class="main">
+          <h1>VISITING CUSTOMERS</h1>
+          <div class="line"></div>
+          <div class="imgList">
+            <div class="container">
+              <div class="item .col-md-4">
+                <img src="//5qrorwxhmploiik.ldycdn.com/cloud/omBqjKmrRinSjlnrnqlo/TU.jpg" alt />
+              </div>
+              <div class="item .col-md-4">
+                <img src="//5qrorwxhmploiik.ldycdn.com/cloud/omBqjKmrRinSjlnrnqlo/TU.jpg" alt />
+              </div>
+              <div class="item .col-md-4">
+                <img src="//5qrorwxhmploiik.ldycdn.com/cloud/omBqjKmrRinSjlnrnqlo/TU.jpg" alt />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -107,9 +179,6 @@ export default {
     }
     .right {
       margin-top: 45px;
-
-      img {
-      }
     }
   }
 
@@ -133,7 +202,8 @@ export default {
     }
   }
 
-  .wedo {
+  .wedo,
+  .customer {
     margin-top: 39px;
     padding: 30px 0;
     .container {
@@ -153,6 +223,78 @@ export default {
           width: 54%;
           border-top-style: solid;
           margin: 3px auto;
+        }
+        .dec {
+          margin: 0 10px;
+          padding-top: 3px;
+          letter-spacing: 0;
+          line-height: 1.7em;
+          text-align: center;
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  .advantage {
+    width: 1200px;
+    margin: 1px auto;
+    padding: 20px 0;
+    font-family: Open Sans;
+    display: flex;
+    .item {
+      width: 33.33%;
+      .itemInfo {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        .top {
+          .num {
+            display: inline-block;
+            vertical-align: baseline;
+            white-space: normal;
+            color: red;
+            width: 25%;
+
+            opacity: 0.15;
+            font-size: 150px;
+            font-weight: 300;
+          }
+          .ad {
+            display: inline-block;
+            vertical-align: baseline;
+            white-space: normal;
+            p {
+              color: #ff0000;
+              font-size: 30px;
+              line-height: 43px;
+            }
+            span {
+              color: #ff0000;
+              font-size: 20px;
+              display: block;
+            }
+          }
+        }
+        .bottom {
+          color: #000000;
+          font-size: 16px;
+
+          line-height: 27px;
+        }
+      }
+    }
+  }
+
+  .customer {
+    .line{
+      width: 31%!important;
+    }
+    .imgList {
+      .container {
+        .item {
+          padding: 10px 0;
+          margin: 0 10px;
         }
       }
     }
