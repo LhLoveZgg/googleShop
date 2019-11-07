@@ -29,7 +29,12 @@
             ref="secondTab"
           >
             <div class="sanjiao"></div>
-            <li v-for="item in secondTab" :key="item.id">
+            <li
+              v-for="item in secondTab"
+              :key="item.id"
+              v-on:mouseover="changeColor($event)"
+              v-on:mouseleave="removeColor($event)"
+            >
               <a href>{{item.val}}</a>
             </li>
           </ul>
@@ -126,11 +131,19 @@ export default {
         }, 300);
       }
     },
+
+    changeColor($event) {
+      $event.currentTarget.className = "red";
+    },
     removeActive($event, ind = 0) {
       if (ind == 1) {
         //离开product
         $event.currentTarget.className = "tab-link";
         this.$refs.secondTab.style = "height:0px;padding: 0;";
+        let that = this;
+        // setTimeout(function() {
+        //   that.show = false;
+        // }, 300);
       } else if (ind == 4) {
         //离开二级菜单
         console.log("离开二级菜单");
@@ -143,6 +156,9 @@ export default {
       } else {
         $event.currentTarget.className = "tab-link";
       }
+    },
+    removeColor($event) {
+      $event.currentTarget.className = "";
     }
   }
 };
@@ -152,9 +168,18 @@ export default {
 @import "../../assets/style/varibles.less";
 .show {
   display: block !important;
+  li {
+    opacity: 1;
+  }
+}
+.red a {
+  color: red !important;
 }
 .hidden {
   display: none !important;
+  li {
+    opacity: 0;
+  }
 }
 .med,
 .search {
@@ -181,6 +206,7 @@ export default {
     direction: ltr;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     position: relative;
+
     a {
       border-left: 0 solid;
       border-right: 0 solid;
@@ -272,6 +298,7 @@ export default {
           z-index: 10;
 
           li {
+            transition: all 0.5s;
             a {
               letter-spacing: 0;
               line-height: 38px;
@@ -279,11 +306,7 @@ export default {
               font-size: 16px;
               color: #fff;
               white-space: nowrap;
-              -webkit-transition: all 0.3s;
-              -moz-transition: all 0.3s;
-              -ms-transition: all 0.3s;
-              -o-transition: all 0.3s;
-              transition: all 0.3s;
+
               -webkit-transition-property: color, background-color, padding-left,
                 padding-right, margin-left, margin-right;
               -moz-transition-property: color, background-color, padding-left,
