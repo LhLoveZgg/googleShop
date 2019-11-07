@@ -1,22 +1,32 @@
 <template>
   <div class="index">
-    <h1>我是首页</h1>
+    <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
   </div>
 </template>
 
 <script>
-export default {};
+import zjwHeader from "@/components/header/header";
+export default {
+  components: {
+    zjwHeader
+  },
+  data() {
+    return {
+      curren_id: 0
+    };
+  },
+  created() {},
+  methods: {
+    changeNav(e) {
+      console.log(arguments);
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
 @import "../assets/style/varibles.less";
-.index{
-   .zjw-center;
-    width: 200px;
-    height: 100px;
-  h1{
-   
-   
-  }
+.index {
+
 }
 </style>
