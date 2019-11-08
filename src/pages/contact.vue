@@ -61,21 +61,24 @@
             </div>
           </div>
           <div class="map col-md-6">
-            <img src="../assets/images/contact/map.png" alt="">
+            <img src="../assets/images/contact/map.png" alt />
           </div>
         </div>
       </div>
     </div>
+    <zjw-footer></zjw-footer>
   </div>
 </template>
 
 <script>
 import zjwHeader from "@/components/header/header";
 import zjwCrumbs from "@/components/crumbs/crumbs";
+import zjwFooter from "@/components/footer/footer";
 export default {
   components: {
     zjwHeader,
-    zjwCrumbs
+    zjwCrumbs,
+    zjwFooter
   },
   data() {
     return {
@@ -219,8 +222,7 @@ export default {
         }
       }
 
-      .map{
-        
+      .map {
       }
     }
   }

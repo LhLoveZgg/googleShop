@@ -124,16 +124,21 @@
         </div>
       </div>
     </div>
+
+    <zjw-footer></zjw-footer>
+
   </div>
 </template>
 
 <script>
 import zjwHeader from "@/components/header/header";
 import zjwCrumbs from "@/components/crumbs/crumbs";
+import zjwFooter from "@/components/footer/footer";
 export default {
   components: {
     zjwHeader,
-    zjwCrumbs
+    zjwCrumbs,
+    zjwFooter
   },
   data() {
     return {

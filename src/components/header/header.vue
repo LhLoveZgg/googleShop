@@ -13,7 +13,7 @@
             v-on:mouseleave="removeActive($event)"
           >Home</span>
         </router-link>
-        <router-link tag="div" class="tab-item" to="/Products">
+        <router-link tag="div" class="tab-item" to="/products">
           <span
             ref="product"
             class="tab-link"
@@ -39,7 +39,7 @@
             </li>
           </ul>
         </router-link>
-        <router-link tag="div" class="tab-item" to="/News">
+        <router-link tag="div" class="tab-item" to="/news">
           <span
             class="tab-link"
             v-on:mouseover="changeActive($event,'2')"

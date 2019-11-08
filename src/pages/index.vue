@@ -1,14 +1,20 @@
 <template>
   <div class="index">
     <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
+    <zjw-footer></zjw-footer>
+
   </div>
 </template>
 
 <script>
 import zjwHeader from "@/components/header/header";
+import zjwFooter from "@/components/footer/footer";
+
 export default {
   components: {
-    zjwHeader
+    zjwHeader,
+
+    zjwFooter
   },
   data() {
     return {
