@@ -1,27 +1,27 @@
 <template>
-  <div class="index">
+  <div class="news">
     <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
-    <zjw-footer></zjw-footer>
+    <zjw-crumbs></zjw-crumbs>
+     <zjw-footer></zjw-footer>
 
   </div>
 </template>
 
 <script>
 import zjwHeader from "@/components/header/header";
+import zjwCrumbs from "@/components/crumbs/crumbs";
 import zjwFooter from "@/components/footer/footer";
-
 export default {
   components: {
     zjwHeader,
-
+    zjwCrumbs,
     zjwFooter
   },
   data() {
     return {
-      curren_id: 0
+      curren_id: 2
     };
   },
-  created() {},
   methods: {
     changeNav(e) {
       console.log(arguments);
@@ -32,7 +32,12 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/style/varibles.less";
-.index {
+
+.news {
 
 }
-</style>
+
+@media (min-width: 990px) {
+}
+</style>>
+
