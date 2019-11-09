@@ -16,49 +16,70 @@
           </div>
 
           <div class="item col-md-3">
-            <div class="name">
+            <div
+              class="name"
+              v-on:mouseover="changeActive($event)"
+              v-on:mouseleave="removeActive($event)"
+               v-on:click="slide1"
+            >
               <h2>QUICK LINKS</h2>
+
+              <span
+                class="iconfont icon-35_xiangxiajiantou angle"
+                :class="show1?'rotate':''"
+               
+              ></span>
             </div>
-            <div class="list">
-              <router-link tag="div" class="tab-item listItem" to="/index">
-                <span class="tab-link">Home</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/products">
-                <span class="tab-link">Products</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/news">
-                <span class="tab-link">News</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/about">
-                <span class="tab-link">About Us</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/contact">
-                <span class="tab-link">Contact Us</span>
-              </router-link>
-            </div>
+            <transition name="expand" class="expand">
+              <div class="list" v-show="show1">
+                <router-link tag="div" class="tab-item listItem" to="/index">
+                  <span class="tab-link">Home</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/products">
+                  <span class="tab-link">Products</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/news">
+                  <span class="tab-link">News</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/about">
+                  <span class="tab-link">About Us</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/contact">
+                  <span class="tab-link">Contact Us</span>
+                </router-link>
+              </div>
+            </transition>
           </div>
 
           <div class="item col-md-3">
-            <div class="name">
+            <div
+              class="name"
+              v-on:mouseover="changeActive($event)"
+              v-on:mouseleave="removeActive($event)"
+              v-on:click="slide2"
+            >
               <h2>PRODUCTS CATEGORY</h2>
+              <span class="iconfont icon-35_xiangxiajiantou angle"  :class="show2?'rotate':''" ></span>
             </div>
-            <div class="list">
-              <router-link tag="div" class="tab-item listItem" to="/index">
-                <span class="tab-link">Industrial Dryer</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/products">
-                <span class="tab-link">Impact Mill</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/news">
-                <span class="tab-link">Powder Mixer</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/about">
-                <span class="tab-link">Wet Granulator</span>
-              </router-link>
-              <router-link tag="div" class="tab-item listItem" to="/contact">
-                <span class="tab-link">Conveying Equipment</span>
-              </router-link>
-            </div>
+            <transition name="expand" class="expand">
+              <div class="list" v-show="show2">
+                <router-link tag="div" class="tab-item listItem" to="/index">
+                  <span class="tab-link">Industrial Dryer</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/products">
+                  <span class="tab-link">Impact Mill</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/news">
+                  <span class="tab-link">Powder Mixer</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/about">
+                  <span class="tab-link">Wet Granulator</span>
+                </router-link>
+                <router-link tag="div" class="tab-item listItem" to="/contact">
+                  <span class="tab-link">Conveying Equipment</span>
+                </router-link>
+              </div>
+            </transition>
           </div>
 
           <div class="item col-md-3">
@@ -99,9 +120,25 @@
 <script type="text/ecmascript-6">
 export default {
   data() {
-    return {};
+    return {
+      show1: false, //控制第一个菜单
+      show2: false //控制第一个菜单
+    };
   },
-  methods: {}
+  methods: {
+    changeActive($event) {
+      $event.currentTarget.className = "name in";
+    },
+    removeActive($event) {
+      $event.currentTarget.className = "name";
+    },
+    slide1() {
+      this.show1 = !this.show1;
+    },
+    slide2() {
+      this.show2 = !this.show2;
+    }
+  }
 };
 </script>
 
@@ -117,9 +154,9 @@ export default {
         .item {
           padding: 10px 0;
           .name {
-            h2:hover {
-              color: #434343;
-            }
+            margin-bottom: 20px;
+
+            position: relative;
             h2 {
               font-size: 20px;
               color: #fff;
@@ -128,9 +165,34 @@ export default {
               line-height: 1.8em;
               text-align: left;
             }
+            .angle {
+              position: absolute;
+              right: 5px;
+              height: 20px;
+              width: 20px;
+              cursor: pointer;
+              top: 50%;
+              margin-top: -10px;
+              line-height: 20px;
+              display: none;
+              color: white;
+              transform: rotate(0);
+            }
           }
+          .in {
+            h2,
+            .angle {
+              color: #434343;
+            }
+            .angle {
+              color: #434343;
+            }
+          }
+          .rotate {
+            transform: rotate(180deg) !important;
+          }
+
           .list {
-            margin-top: 20px;
             .listItem {
               cursor: pointer;
               font-size: 14px;
@@ -159,7 +221,7 @@ export default {
             margin-top: 22px;
             display: flex;
             letter-spacing: 12px;
-            width: 60%;
+            width: 180px;
             justify-content: space-between;
             span {
               display: block;
@@ -201,9 +263,9 @@ export default {
   }
 
   .bottom {
-        background-color: #7d7d7d;
-    .container{
-      border-top: 1px solid rgb(204, 204, 204)
+    background-color: #7d7d7d;
+    .container {
+      border-top: 1px solid rgb(204, 204, 204);
     }
     p {
       color: #ffffff;
@@ -215,9 +277,136 @@ export default {
   }
 }
 
+@media (min-width: 1220px) {
+  .footer {
+    .top {
+      .container {
+        .main {
+          .item {
+            .list {
+              display: block !important;
+            }
+          }
+          .share {
+          }
+        }
+      }
+    }
+  }
+}
 @media (min-width: 990px) {
+  .footer {
+    .top {
+      .container {
+        .main {
+          .item {
+            .list {
+              display: block !important;
+            }
+          }
+          .share {
+          }
+        }
+      }
+    }
+  }
 }
 
-@media (min-width: 1220px) {
+@media (max-width: 989px) and (min-width: 768px) {
+  .expand-enter-active {
+    /*定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。*/
+    transition: all 0.3s ease;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .expand-leave-active {
+    height: 0px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .expand-enter {
+    height: 0;
+    opacity: 0;
+  }
+
+  .expand-leave {
+    height: 50px;
+    opacity: 1;
+  }
+  .footer {
+    .top {
+      .container {
+        .main {
+          .item {
+            padding: 5px 0;
+            .name {
+              .angle {
+                display: block;
+
+                transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+              }
+            }
+          }
+          .share {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) and (min-width: 1px) {
+  .expand-enter-active {
+    /*定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。*/
+    transition: all 0.3s ease;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .expand-leave-active {
+    height: 0px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .expand-enter {
+    height: 0;
+    opacity: 0;
+  }
+
+  .expand-leave {
+    height: 50px;
+    opacity: 1;
+  }
+  .footer {
+    .top {
+      .container {
+        .main {
+          .item {
+            margin: 0 10px;
+            .name {
+              .angle {
+                 display: block;
+
+                transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+              }
+            }
+            .list {
+            }
+          }
+          .share {
+            margin: 22px 10px 0;
+            .log {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>
