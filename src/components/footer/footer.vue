@@ -84,7 +84,7 @@
 
           <div class="item col-md-3">
             <div class="name">
-              <h2>PRODUCTS CATEGORY</h2>
+              <h2>CONTACT US</h2>
             </div>
             <div class="list">
               <div class="listItem bot">
@@ -382,12 +382,17 @@ export default {
     opacity: 1;
   }
   .footer {
+    padding-bottom: 56px;
     .top {
       .container {
         .main {
           .item {
             margin: 0 10px;
+            padding: 0;
             .name {
+              h2{
+                font-size: 18px!important;
+              }
               .angle {
                  display: block;
 
@@ -399,13 +404,21 @@ export default {
             }
           }
           .share {
-            margin: 22px 10px 0;
+            margin: 12px 10px 0;
             .log {
               margin-left: 0;
+              margin-top: 0;
             }
           }
         }
       }
+    }
+
+    .bottom{
+      p{
+          margin: 0 10px;
+      }
+    
     }
   }
 }
