@@ -73,7 +73,7 @@
         >
           <Dropdown @command="handleCommand" v-if="menu.children">
             <span class="tab-link">{{menu.label}}</span>
-            <dropdown-menu slot="dropdown" >
+            <dropdown-menu slot="dropdown">
               <dropdown-item
                 v-for="subMenu in menu.children"
                 :key="subMenu.label"
@@ -123,6 +123,16 @@ export default {
 
 <style lang="less" scoped>
 @import "../../assets/style/varibles.less";
+.el-dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  border: none;
+
+ 
+}
+.el-popper .popper__arrow, .el-popper .popper__arrow::after {
+  display: none!important;
+}
+
 .show {
   display: block !important;
   li {
@@ -165,6 +175,7 @@ export default {
           display: table-cell;
           float: none;
           position: relative;
+          text-align: center;
           .tab-link {
             padding-bottom: 5px;
             letter-spacing: 0;
@@ -179,6 +190,10 @@ export default {
             text-align: center;
             cursor: pointer;
             // 点击时的样式
+          }
+
+          .tab-link:hover {
+            border-bottom: 2px solid red;
           }
 
           &.router-link-active {
