@@ -20,15 +20,11 @@
               class="name"
               v-on:mouseover="changeActive($event)"
               v-on:mouseleave="removeActive($event)"
-               v-on:click="slide1"
+              v-on:click="slide1"
             >
               <h2>QUICK LINKS</h2>
 
-              <span
-                class="iconfont icon-35_xiangxiajiantou angle"
-                :class="show1?'rotate':''"
-               
-              ></span>
+              <span class="iconfont icon-35_xiangxiajiantou angle" :class="show1?'rotate':''"></span>
             </div>
             <transition name="expand" class="expand">
               <div class="list" v-show="show1">
@@ -59,7 +55,7 @@
               v-on:click="slide2"
             >
               <h2>PRODUCTS CATEGORY</h2>
-              <span class="iconfont icon-35_xiangxiajiantou angle"  :class="show2?'rotate':''" ></span>
+              <span class="iconfont icon-35_xiangxiajiantou angle" :class="show2?'rotate':''"></span>
             </div>
             <transition name="expand" class="expand">
               <div class="list" v-show="show2">
@@ -112,6 +108,17 @@
     <div class="bottom">
       <div class="container">
         <p>Copyright 2018 Changzhou Doing Machine Co., Ltd Support By Youxin Manage Entrance</p>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="item">
+        <div class="iconfont icon-dianhua1"></div>
+      </div>
+      <div class="item">
+        <div class="iconfont icon-youjian"></div>
+      </div>
+      <div class="item">
+        <div class="iconfont icon-dianhua"></div>
       </div>
     </div>
   </div>
@@ -275,6 +282,10 @@ export default {
       margin-top: 10px;
     }
   }
+
+  .foot {
+    display: none;
+  }
 }
 
 @media (min-width: 1220px) {
@@ -390,11 +401,11 @@ export default {
             margin: 0 10px;
             padding: 0;
             .name {
-              h2{
-                font-size: 18px!important;
+              h2 {
+                font-size: 18px !important;
               }
               .angle {
-                 display: block;
+                display: block;
 
                 transition: all 0.5s;
                 -webkit-transition: all 0.5s;
@@ -414,11 +425,27 @@ export default {
       }
     }
 
-    .bottom{
-      p{
-          margin: 0 10px;
+    .bottom {
+      p {
+        margin: 0 10px;
       }
-    
+    }
+
+    .foot {
+      display: flex;
+      height: 56px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 99999999;
+      .item {
+        width: 33.33%;
+        .zjw-center;
+        color: #999;
+        border: 1px solid #eee;
+        font-size: 16px;
+        background-color: #fff;
+      }
     }
   }
 }
