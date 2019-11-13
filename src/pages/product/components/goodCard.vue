@@ -21,28 +21,13 @@
         >Double Cone Powder Mixer blender</a>
         <dl class="prodlist-defined-list"></dl>
         <dl class="prodlist-defined-list"></dl>
-        <div
-          class="prodlist-parameter-btns prodlist-btn-default"
-          style="margin-top:10px;position:relative;"
-        >
-          <button
-            prodid="hNpAMBYWlzhE"
-            style="text-align:center;text-indent:-40px;"
-            class="default-button prodlist-pro-inquire mt10"
-          >
-            <i class="togetherClass fa fa-envelope-o" aria-hidden="true"></i>Inquire
+        <div class="prodlist-parameter-btns prodlist-btn-default">
+          <button prodid="hNpAMBYWlzhE" class="default-button prodlist-pro-inquire">
+            <i class="togetherClass icon-mail" aria-hidden="true"></i>Inquire
           </button>
-          <a
-            style="text-align: center; line-height: 40px; width: 40px;"
-            href="javascript:void(0);"
-            rel="nofollow"
-            prodid="hNpAMBYWlzhE"
-            prodname="Double Cone Powder Mixer blender"
-            prodphotourl="//5ororwxhmplorik.ldycdn.com/cloud/loBqjKmrRinSkpqklqlq/640-40-40.jpg"
-            class="InquireAndBasket pro-detail-basket block prodlist-pro-addbasket-btn mt10"
-          >
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <span class="hide" style="display: none;">Add to Basket</span>
+          <a href="javascript:void(0);">
+            <i class="icon-cart" aria-hidden="true"></i>
+            <span>Add to Basket</span>
           </a>
         </div>
       </div>
@@ -63,6 +48,7 @@ export default {};
     width: 200px;
     height: 200px;
     margin: 0 auto;
+    cursor: pointer;
     .prodlist-inner {
       width: 100%;
       height: 100%;
@@ -75,6 +61,15 @@ export default {};
         .prodlist-cell {
           display: table-cell;
           vertical-align: middle;
+          position: relative;
+          &:hover {
+            a {
+              &::before {
+                transform: scale(1);
+                opacity: 0.4;
+              }
+            }
+          }
           a {
             font-size: 13px;
             color: rgb(51, 51, 51);
@@ -82,6 +77,23 @@ export default {};
             letter-spacing: 0px;
             line-height: 1em;
             text-align: center;
+            transition: all 0.3s;
+            &::before {
+              display: block;
+              content: "";
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              background-color: #000;
+              opacity: 0;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoAQMAAAC2MCouAAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACJJREFUCNdj+A8CDA0MDAyMBEkO6pBACxupZxoDA3EkxKcA1PQhWhUHl4gAAAAASUVORK5CYII=);
+              transform: scale(0);
+              transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            }
           }
           img {
             max-width: 100%;
@@ -94,13 +106,16 @@ export default {};
   .prodlist-parameter-wrap {
     .prodlist-parameter-inner {
       padding: 5px 0;
-      a {
+      a.prodlist-pro-name {
+        font-family: Open Sans;
         display: block;
-        height: 3em;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0;
+        text-align: center;
         line-height: 1.5em !important;
-        margin-bottom: 6px;
-        font-size: 14px;
-        color: #222;
+        margin-bottom: 16px;
+        color: rgb(51, 51, 51);
         text-decoration: none;
         overflow: hidden;
         &:hover {
@@ -109,10 +124,11 @@ export default {};
         }
       }
       .prodlist-parameter-btns {
+        position: relative;
         .prodlist-pro-inquire {
-          width: 100%;
+          position: relative;
           height: 32px;
-          margin-right: 5px;
+          width: 100%;
           background: #999;
           color: #fff;
           font-size: 14px;
@@ -121,16 +137,53 @@ export default {};
         .default-button {
           padding: 0;
           height: 40px;
-          line-height: 40px;
           box-sizing: border-box;
           border-radius: 3px;
           border: 1px solid #d8dde6;
           background: #eaedef;
           color: #333;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          & > i {
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            display: block;
+            width: 40px;
+          }
         }
         a {
           color: #333;
           font-size: 14px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 40px;
+          border-left: 1px solid #d8dde6;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+          z-index: 1;
+          transition: all 0.3s;
+          overflow: hidden;
+          & > span {
+            display: none;
+            white-space: nowrap;
+            font-size: 14px;
+          }
+          &:hover {
+            background: #999;
+            width: 160px;
+            & > span {
+              display: inline-block;
+            }
+          }
         }
       }
     }
