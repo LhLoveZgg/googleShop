@@ -8,63 +8,6 @@
       <img src="//5qrorwxhmploiik.ldycdn.com/cloud/irBqjKmrRinSrlikirln/LOGO.png" alt />
     </div>-->
     <div class="med col-md-8">
-      <!-- <div class="list">
-        <router-link tag="div" class="tab-item" to="/index">
-          <span
-            class="tab-link"
-            v-on:mouseover="changeActive($event,'0')"
-            v-on:mouseleave="removeActive($event)"
-          >Home</span>
-        </router-link>
-        <router-link tag="div" class="tab-item" to="/products">
-          <span
-            ref="product"
-            class="tab-link"
-            v-on:mouseover="changeActive($event,'1')"
-            v-on:mouseleave="removeActive($event,'1')"
-          >Products</span>
-
-          <ul
-            :class="show?'show':'hidden'"
-            class="secondTab"
-            v-on:mouseover="changeActive($event,'4')"
-            v-on:mouseleave="removeActive($event,'4')"
-            ref="secondTab"
-          >
-            <div class="sanjiao"></div>
-            <li
-              v-for="item in secondTab"
-              :key="item.id"
-              v-on:mouseover="changeColor($event)"
-              v-on:mouseleave="removeColor($event)"
-            >
-              <a href>{{item.val}}</a>
-            </li>
-          </ul>
-        </router-link>
-        <router-link tag="div" class="tab-item" to="/news">
-          <span
-            class="tab-link"
-            v-on:mouseover="changeActive($event,'2')"
-            v-on:mouseleave="removeActive($event)"
-          >News</span>
-        </router-link>
-        <router-link tag="div" class="tab-item" to="/about">
-          <span
-            class="tab-link"
-            v-on:mouseover="changeActive($event,'3')"
-            v-on:mouseleave="removeActive($event)"
-          >About Us</span>
-        </router-link>
-        <router-link tag="div" class="tab-item" to="/contact">
-          <span
-            class="tab-link"
-            v-on:mouseover="changeActive($event,'5')"
-            v-on:mouseleave="removeActive($event)"
-          >Contact Us</span>
-        </router-link>
-      </div>-->
-
       <div class="list">
         <router-link
           tag="div"
@@ -96,7 +39,28 @@
           <span class="line line-middle"></span>
           <span class="line line-bottom"></span>
         </div>
-        <div class="med"></div>
+
+        <div class="listM" :class="on?'slide':''">
+          <div class="tab-item" v-for="menu in menus" :key="menu.label" :exact="menu.exact">
+            <div class="tab-link" v-if="menu.children">
+              <div class="tabItem" @click="$router.push({path:menu.path})">{{menu.label}}</div>
+
+              <div class="angle" @click="changeChildren()">
+                <img src="./angle.png" alt />
+              </div>
+
+              <collapse-transition>
+                <ul v-show="childrenShow">
+                  <li v-for="subMenu in menu.children" :key="subMenu.label">{{subMenu.label}}</li>
+                </ul>
+              </collapse-transition>
+            </div>
+
+            <div class="tab-link" v-else>
+              <div class="tabItem" @click="$router.push({path:menu.path})">{{menu.label}}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -110,17 +74,22 @@
 </template>
 
 <script type="text/ecmascript-6">
+import "element-ui/lib/theme-chalk/base.css";
+// collapse 展开折叠
+import CollapseTransition from "element-ui/lib/transitions/collapse-transition";
 import { Dropdown, DropdownMenu, DropdownItem } from "element-ui";
 export default {
   data() {
     return {
-      on: false
+      on: false,
+      childrenShow: false
     };
   },
   components: {
     Dropdown,
     DropdownMenu,
-    DropdownItem
+    DropdownItem,
+    CollapseTransition
   },
   created() {
     this.$store.dispatch("app/fetchProducts");
@@ -136,6 +105,17 @@ export default {
     },
     changeOn() {
       this.on = !this.on;
+    },
+    changeChildren() {
+      this.childrenShow = !this.childrenShow;
+    },
+    goTo(path){
+      console.log(path)
+      this.$router.push('/products/list')
+    },
+    goToProd(path){
+      // console.log(path)
+      this.$router.push('/news')
     }
   }
 };
@@ -399,6 +379,7 @@ export default {
   .tab {
     display: flex;
     height: 60px;
+    position: relative;
     .icon {
       .zjw-center;
       width: 72px;
@@ -466,6 +447,7 @@ export default {
       display: block;
       width: 100%;
       position: absolute;
+
       .nav-title1 {
         .nav-btn {
           display: block;
@@ -508,58 +490,125 @@ export default {
           top: 38px;
         }
       }
-      .med {
+
+      .listM {
+        top: -100px;
+        position: absolute;
+        opacity: 0;
+        transition: all 0.5s ease;
+        background: #fff;
+        .tab-link {
+          position: relative;
+          display: block;
+          // align-items: center;
+          min-height: 50px;
+          line-height: 50px;
+          color: #333;
+          z-index: 9999999;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-decoration: none;
+          cursor: pointer;
+          .tabItem {
+            padding: 0 50px 0 20px;
+          }
+          .angle {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            .zjw-center;
+            img {
+              width: 16px;
+              height: 16px;
+            }
+          }
+          ul {
+            li {
+              padding: 0 50px 0 40px;
+              position: relative;
+              z-index: 9999999;
+            }
+            li:after {
+              content: "";
+              display: inline-block;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 1px;
+              background-color: #cacaca;
+            }
+            li:first-child {
+              border-top: 1px solid #cacaca;
+            }
+          }
+        }
+        .tab-link:after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: #cacaca;
+        }
+      }
+      .listM.slide {
+        top: 60px;
+        width: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
       }
     }
     .search {
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding-right: 60px;
-
-      border-radius: 0;
-      background-color: transparent;
-      font-size: 14px;
-      color: #545454;
-      letter-spacing: 0;
-      line-height: 1.7em;
-      text-align: left;
       display: none;
-      input {
-        height: 32px;
-        line-height: 32px;
-        font-size: 14px;
-        color: #333;
-        width: 100%;
-        text-indent: 8px;
-        box-sizing: border-box;
-        border: 1px solid #ddd;
-        display: block;
-        background: 0;
-        padding: 0 32px 0 0;
-        margin: 0;
-      }
-      img {
-        position: absolute;
-        // top: 6px;
-        right: 38px;
-        cursor: pointer;
-        text-align: center;
-        overflow: hidden;
-        font-family: arial !important;
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    .search > div {
-      // margin-top: 15px;
-      position: relative;
-      width: 100%;
-      padding-right: 32px;
-      display: flex;
-      align-items: center;
     }
   }
+
+  .transition-box {
+    margin-bottom: 10px;
+    width: 200px;
+    height: 100px;
+    border-radius: 4px;
+    background-color: #409eff;
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    margin-right: 20px;
+  }
+
+  // .fade-enter-active {
+  //   /*定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。*/
+  //   transition: all 0.3s ease;
+  //   top: 0px;
+  //   opacity: 1;
+  //   overflow: hidden;
+  //   position: absolute;
+  // }
+
+  // .fade-leave-active {
+  //   top: 0px;
+  //   transition: all 0.3s ease;
+  //   opacity: 0;
+  //   overflow: hidden;
+  //   position: absolute;
+  // }
+
+  // .fade-enter {
+  //   top: 0px;
+  //   opacity: 0;
+  //   position: absolute;
+  // }
+
+  // .fade-leave {
+  //   position: absolute;
+  //   top: 60px;
+  //   opacity: 1;
+  // }
 }
 </style>
