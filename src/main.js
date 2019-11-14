@@ -6,8 +6,8 @@ import "./assets/style/reset.css";
 import "./assets/style/border.css";
 import "./assets/style/font-awesome.css"
 import "./assets/style/font/iconfont.css"
-import router from './router'
-import "./assets/style/font-awesome.css";
+import "@/fonts/style.css";
+import router from "./router";
 import store from "./store";
 
 Vue.config.productionTip = false;

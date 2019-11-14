@@ -1,7 +1,11 @@
 @<template>
-  <div>
+  <section>
+    <aside>
+      <div class="productsMenu"></div>
+      <div class="concatUs"></div>
+    </aside>
     <goodItem></goodItem>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -13,5 +17,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+section {
+  display: flex;
+  aside{
+
+  }
+}
 </style>
