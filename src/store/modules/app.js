@@ -1,6 +1,5 @@
 const state = {
-  menu: [
-    {
+  menu: [{
       label: "Home",
       path: "/",
       exact: true
@@ -22,25 +21,43 @@ const state = {
       label: "Contact Us",
       path: "/contact"
     }
-  ]
+  ],
+  products: []
 };
 
 const mutations = {
   SET_PRODUCTS: (state, menu) => {
     state.menu[1].children = menu;
+    state.products = menu
   }
 };
 
 const actions = {
   // fetch products
-  fetchProducts({ commit }) {
+  fetchProducts({
+    commit
+  }) {
     const productPath = "/products/list";
-    const products = [
-      { label: "Industrial Dryer", id: 0 },
-      { label: "Impact Mill", id: 1 },
-      { label: "Powder Mixer", id: 2 },
-      { label: "Wet Granulator", id: 3 },
-      { label: "Conveying Equipment", id: 4 }
+    const products = [{
+        label: "Industrial Dryer",
+        id: 0
+      },
+      {
+        label: "Impact Mill",
+        id: 1
+      },
+      {
+        label: "Powder Mixer",
+        id: 2
+      },
+      {
+        label: "Wet Granulator",
+        id: 3
+      },
+      {
+        label: "Conveying Equipment",
+        id: 4
+      }
     ];
 
     commit(
