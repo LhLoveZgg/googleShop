@@ -14,7 +14,7 @@ export default new Router({
       path: "/index",
       name: "index",
       alias: '/',
-      component: index
+      component: index  
     },
     {
       path: "/news",
