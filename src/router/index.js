@@ -9,45 +9,41 @@ import layout from "@/layout";
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: "/index",
-      name: "index",
-      alias: '/',
-      component: index  
-    },
-    {
-      path: "/news",
-      name: "news",
-      component: news
-    },
-    {
-      path: "/products",
-      name: "products",
-      redirect: "/products/list",
+  routes: [{
+      path: '/',
       component: layout,
-      children: [
+      children: [{
+          path: "/",
+          name: "index",
+          component: index
+        },
         {
-          name: "productsList",
-          path: "/products/list/:id?",
+          path: "/news",
+          name: "news",
+          component: news
+        },
+        {
+          path: "/products",
+          name: "products",
           component: () => import("@/pages/product")
+        },
+        {
+          path: "/about",
+          name: "about",
+          component: about
+        },
+        {
+          path: "/contact",
+          name: "contact",
+          component: contact
+        },
+        {
+          path: "*",
+          name: "404",
+          component: () => import("@/pages/notFound.vue")
         }
+
       ]
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: about
-    },
-    {
-      path: "/contact",
-      name: "contact",
-      component: contact
-    },
-    {
-      path: "*",
-      name: "404",
-      component: () => import("@/pages/notFound.vue")
     }
   ]
 });
