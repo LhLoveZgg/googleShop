@@ -35,7 +35,7 @@
         <p>+86-18605194068</p>
       </div>
     </div>
-    <div class="top"></div>
+    <div class="top" v-if="btnFlag" @click="backTop"></div>
   </div>
 </template>
 
@@ -43,7 +43,8 @@
 export default {
   data() {
     return {
-      on: ""
+      on: "",
+      btnFlag: ""
     };
   },
   methods: {
@@ -57,7 +58,39 @@ export default {
     },
     changeOn(ind) {
       this.on = ind;
+    },
+    backTop() {
+      const that = this;
+      let timer = setInterval(() => {
+        let ispeed = Math.floor(-that.scrollTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          that.scrollTop + ispeed;
+        if (that.scrollTop === 0) {
+          clearInterval(timer);
+        }
+      }, 16);
+    },
+
+    scrollToTop() {
+      const that = this;
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      that.scrollTop = scrollTop;
+      if (that.scrollTop > 60) {
+        that.btnFlag = true;
+      } else {
+        that.btnFlag = false;
+      }
     }
+  },
+  mounted() {
+    window.addEventListener("scroll", this.scrollToTop);
+  },
+
+  destroyed() {
+    window.removeEventListener("scroll", this.scrollToTop);
   }
 };
 </script>
@@ -134,8 +167,7 @@ export default {
     width: 38px;
     overflow: hidden;
     line-height: 38px;
-    background: url('./toppng.png')
-      no-repeat;
+    background: url("./toppng.png") no-repeat;
     text-align: center;
     text-indent: -99em;
     text-decoration: none;
@@ -148,5 +180,5 @@ export default {
     display: none;
   }
 }
-</style>>
+</style>
 
