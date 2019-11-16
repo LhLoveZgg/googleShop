@@ -1,8 +1,8 @@
 <template>
   <div class="news">
-    <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
+
     <zjw-crumbs></zjw-crumbs>
-     <zjw-footer></zjw-footer>
+
 
   </div>
 </template>
