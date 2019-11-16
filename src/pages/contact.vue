@@ -1,6 +1,6 @@
 <template>
   <div class="contact">
-    <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
+
     <zjw-crumbs></zjw-crumbs>
     <div class="info">
       <div class="top container">
@@ -66,7 +66,7 @@
         </div>
       </div>
     </div>
-    <zjw-footer></zjw-footer>
+
   </div>
 </template>
 
@@ -229,6 +229,81 @@ export default {
 }
 
 @media (min-width: 990px) {
+}
+@media (max-width: 989px) and (min-width: 768px) {
+  .contact .bottom .container .feedback {
+    padding: 5px 0 !important;
+    margin: 0 5px !important;
+  }
+  .contact .bottom .container .feedback .table .message,
+  .contact .bottom .container .feedback .table .email,
+  .contact .bottom .container .feedback .table .name,
+  .contact .bottom .container .feedback .table .button {
+    padding: 5px 0 !important;
+  }
+  .contact {
+    .info {
+    }
+
+    .itemList {
+      display: block;
+      .item {
+        padding: 5px 0;
+      }
+    }
+
+    .bottom {
+      .container {
+        display: block;
+        .map {
+          padding: 5px 0;
+          margin: 0 5px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) and (min-width: 1px) {
+  .contact .bottom .container .feedback {
+    padding: 5px 0 !important;
+    margin: 0 5px !important;
+  }
+  .contact .bottom .container .feedback .table .message,
+  .contact .bottom .container .feedback .table .email,
+  .contact .bottom .container .feedback .table .name,
+  .contact .bottom .container .feedback .table .button {
+    padding: 5px 0 !important;
+  }
+  .contact {
+    .info {
+    }
+
+    .itemList {
+      display: block;
+      .item {
+        padding: 5px 0;
+      }
+    }
+
+    .bottom {
+      .container {
+        display: block;
+        .map {
+          padding: 5px 0;
+          margin: 0 5px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 </style>>
 

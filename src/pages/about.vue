@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-    <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
     <zjw-crumbs></zjw-crumbs>
     <div class="info">
       <div class="container">
@@ -125,7 +124,6 @@
       </div>
     </div>
 
-    <zjw-footer></zjw-footer>
 
   </div>
 </template>
@@ -155,13 +153,13 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/style/varibles.less";
-.left,
-.right {
-  padding: 10px 0;
-  margin: 0 10px;
-}
 
 .about {
+  .left,
+  .right {
+    padding: 10px 0;
+    margin: 0 10px;
+  }
   .info {
     .container {
       display: flex;
@@ -292,8 +290,8 @@ export default {
   }
 
   .customer {
-    .line{
-      width: 31%!important;
+    .line {
+      width: 31% !important;
     }
     .imgList {
       .container {
@@ -307,6 +305,78 @@ export default {
 }
 
 @media (min-width: 990px) {
+}
+
+@media (max-width: 989px) and (min-width: 768px) {
+  .about {
+    .left,
+    .right {
+      padding: 5px 0;
+      margin: 0 5px;
+    }
+
+    .info {
+      .container {
+        display: block;
+      }
+    }
+
+    .imgList {
+      .container {
+        display: block;
+        .item {
+          padding: 5px 0;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+    .advantage {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 767px) and (min-width: 1px) {
+  .about {
+    .left,
+    .right {
+      padding: 5px 0;
+      margin: 0 10px;
+    }
+    .right{
+      display: flex;
+      justify-content: center;
+      img{
+        width: 100%;
+      }
+    }
+
+
+    .info {
+      .container {
+        display: block;
+      }
+    }
+
+    .imgList {
+      .container {
+        display: block;
+        .item {
+          padding: 5px 0;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+    .advantage {
+      width: 100%;
+      display: block;
+      .item{
+        width: 100%;
+      }
+    }
+  }
 }
 </style>>
 
