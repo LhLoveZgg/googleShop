@@ -8,7 +8,7 @@
       @transitionend="transitionend"
       :style="{height: status ? liHeight * list.length +'px' : 0}"
     >
-      <li class="cell" v-for="item in list" :key="item.path">{{item.label}}</li>
+      <li class="cell" v-for="item in list" :key="item.path" @click="$router.push(item.path)">{{item.label}}</li>
     </ul>
   </div>
 </template>

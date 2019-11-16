@@ -1,6 +1,6 @@
 @<template>
-<el-row tag="section" class="container products" >
-  <el-col :md="6" :sm="24" :xs="24" tag="aside">
+  <el-row tag="section" class="container products">
+    <el-col :md="6" :sm="24" :xs="24" tag="aside">
       <div class="productsMenu">
         <flodMenu style="marginBottom:40px" :list="products">
           <template slot="title">
@@ -9,17 +9,18 @@
         </flodMenu>
         <contactUsAside />
       </div>
-  </el-col>
-  <el-col :md="18" :sm="24" :xs="24" tag="article">
-    
-  </el-col>
-</el-row>
+    </el-col>
+    <el-col :md="18" :sm="24" :xs="24" tag="article">
+      <goodsDetail />
+    </el-col>
+  </el-row>
 </template>
 
 <script>
 import goodItem from "./components/goodCard";
 import contactUsAside from "@/components/contactUs";
 import flodMenu from "@/components/flodMenu";
+import goodsDetail from "./components/goodsDetail";
 import { Row, Col, Pagination } from "element-ui";
 export default {
   components: {
@@ -28,7 +29,8 @@ export default {
     flodMenu,
     elRow: Row,
     elCol: Col,
-    elPagination: Pagination
+    elPagination: Pagination,
+    goodsDetail
   },
   computed: {
     products() {
@@ -38,5 +40,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+.products {
+  & > aside {
+    padding: 10px 10px;
+  }
+  & > article {
+    padding: 20px 10px;
+  }
+}
 </style>

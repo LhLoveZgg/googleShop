@@ -1,7 +1,7 @@
 @<template>
   <div class="goodItem">
     <div class="prodlist-display">
-      <div class="prodlist-inner" @click="$router.push(`/products/detail?id${info.id}`)">
+      <div class="prodlist-inner" @click="$router.push(`/products/detail/${info.id}`)">
         <div class="prodlist-picbox">
           <div class="prodlist-cell">
             <a href="javascript:void(0)" :title="info.title"></a>
@@ -21,7 +21,7 @@
           href="javascript:void(0)"
           class="prodlist-pro-name"
           :title="info.title"
-          @click="$router.push(`/products/detail?id${info.id}`)"
+          @click="$router.push(`/products/detail/${info.id}`)"
           style="height: 37px; line-height: 1.5em;"
         >{{info.title}}</a>
         <dl class="prodlist-defined-list"></dl>

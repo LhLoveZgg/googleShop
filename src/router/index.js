@@ -29,12 +29,12 @@ export default new Router({
           component: () => import("@/pages/product"),
           children: [
             {
-              path: "list",
+              path: "list/:id?",
               name: "list",
               component: () => import("@/pages/product/list")
             },
             {
-              path: "detail",
+              path: "detail/:id",
               name: "detail",
               component: () => import("@/pages/product/detail")
             },
