@@ -66,7 +66,6 @@ export default {
     border-top: 1px dashed #ddd;
     border-bottom: 1px dashed #ddd;
     letter-spacing: 0;
-    line-height: 2.2em;
     text-align: left;
     font-size: 14px;
     color: #545454;
@@ -74,6 +73,7 @@ export default {
     overflow: hidden;
     li {
       cursor: pointer;
+      line-height: 36px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -87,6 +87,24 @@ export default {
       & + li {
         border-top: 1px solid #e7e7e7;
       }
+    }
+  }
+
+  @media (min-width: 990px) {
+    & > ul > li {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1220px) {
+    & > ul > li {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 989px) and (min-width: 768px) {
+    & > ul > li {
+      font-size: 16px;
     }
   }
 }

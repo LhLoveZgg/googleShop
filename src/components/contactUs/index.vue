@@ -46,6 +46,7 @@ export default {
     background-color: #7d7d7d;
     padding-left: 20px;
   }
+
   & > div {
     border-left: 1px dashed #ddd;
     border-right: 1px dashed #ddd;
@@ -60,11 +61,31 @@ export default {
       font-size: 14px;
       color: #545454;
       letter-spacing: 0;
-      line-height: 1.7em;
+      line-height: 24px;
       text-align: left;
       & + .cell {
         margin-top: 30px;
       }
+    }
+  }
+
+  @media (min-width: 990px) {
+  & > div > .cell {
+      font-size: 14px
+    }
+  }
+
+  @media (min-width: 1220px) {
+  & > div > .cell {
+      font-size: 16px
+    }
+  }
+
+
+
+  @media (max-width: 989px) and (min-width: 768px) {
+  & > div > .cell {
+      font-size: 16px
     }
   }
 }
