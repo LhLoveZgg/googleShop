@@ -1,7 +1,6 @@
 <template>
   <div class="index">
-    <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
-    <zjw-footer></zjw-footer>
+
 
   </div>
 </template>

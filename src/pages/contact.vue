@@ -1,6 +1,6 @@
 <template>
   <div class="contact">
-    <zjw-header @changeNav="curren_id=arguments[0]"></zjw-header>
+
     <zjw-crumbs></zjw-crumbs>
     <div class="info">
       <div class="top container">
@@ -66,7 +66,7 @@
         </div>
       </div>
     </div>
-    <zjw-footer></zjw-footer>
+
   </div>
 </template>
 

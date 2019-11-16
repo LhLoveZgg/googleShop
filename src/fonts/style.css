@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?e08cz9');
-  src:  url('fonts/icomoon.eot?e08cz9#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?e08cz9') format('truetype'),
-    url('fonts/icomoon.woff?e08cz9') format('woff'),
-    url('fonts/icomoon.svg?e08cz9#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?y06drl');
+  src:  url('fonts/icomoon.eot?y06drl#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?y06drl') format('truetype'),
+    url('fonts/icomoon.woff?y06drl') format('woff'),
+    url('fonts/icomoon.svg?y06drl#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -30,4 +30,22 @@
 }
 .icon-mail:before {
   content: "\e901";
+}
+.icon-dianhua:before {
+  content: "\e63e";
+}
+.icon-35_xiangxiajiantou:before {
+  content: "\e615";
+}
+.icon-guanbi-01:before {
+  content: "\e617";
+}
+.icon-dianhua1:before {
+  content: "\e6f9";
+}
+.icon-youjian:before {
+  content: "\e697";
+}
+.icon-menu:before {
+  content: "\e633";
 }
