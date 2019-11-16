@@ -25,7 +25,26 @@ export default new Router({
         {
           path: "/products",
           name: "products",
-          component: () => import("@/pages/product")
+          redirect: '/products/list',
+          component: () => import("@/pages/product"),
+          children: [
+            {
+              path: "list",
+              name: "list",
+              component: () => import("@/pages/product/list")
+            },
+            {
+              path: "detail",
+              name: "detail",
+              component: () => import("@/pages/product/detail")
+            },
+            {
+              path: "order",
+              name: "order",
+              component: () => import("@/pages/product/order")
+            },
+
+          ]
         },
         {
           path: "/about",
