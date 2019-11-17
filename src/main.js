@@ -4,11 +4,14 @@ import Vue from "vue";
 import App from "./App";
 import "./assets/style/reset.css";
 import "./assets/style/border.css";
-import "./assets/style/font-awesome.css"
-import router from './router'
 import "./assets/style/font-awesome.css";
+
+import "../node_modules/swiper/dist/css/swiper.min.css";
 import "@/fonts/style.css";
+import router from "./router";
 import store from "./store";
+import VueAwesomeSwiper from "vue-awesome-swiper";
+Vue.use(VueAwesomeSwiper);
 
 Vue.config.productionTip = false;
 
