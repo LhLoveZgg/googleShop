@@ -1,14 +1,21 @@
 @<template>
   <div class="flodMenu">
-    <h3 @click="toggle">
+    <h3 @click="toggle" :style="{ background: color }">
       <slot name="title"></slot>
     </h3>
     <ul
       ref="ul"
       @transitionend="transitionend"
-      :style="{height: status ? liHeight * list.length +'px' : 0}"
+      :style="{ height: status ? liHeight * list.length + 'px' : 0 }"
     >
-      <li class="cell" v-for="item in list" :key="item.path" @click="$router.push(item.path)">{{item.label}}</li>
+      <li
+        class="cell"
+        v-for="item in list"
+        :key="item.path"
+        @click="$router.push(item.path)"
+      >
+        {{ item.label }}
+      </li>
     </ul>
   </div>
 </template>
@@ -23,7 +30,11 @@ export default {
     };
   },
   props: {
-    list: Array
+    list: Array,
+    color: {
+      type: String,
+      default: "#7d7d7d"
+    }
   },
   computed: {},
   mounted() {
@@ -57,7 +68,6 @@ export default {
     line-height: 3em;
     text-align: left;
     display: block;
-    background-color: #7d7d7d;
     padding-left: 20px;
   }
   & > ul {

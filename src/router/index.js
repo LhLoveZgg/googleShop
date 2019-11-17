@@ -9,10 +9,12 @@ import layout from "@/layout";
 Vue.use(Router);
 
 export default new Router({
-  routes: [{
-      path: '/',
+  routes: [
+    {
+      path: "/",
       component: layout,
-      children: [{
+      children: [
+        {
           path: "/",
           name: "index",
           component: index
@@ -25,7 +27,7 @@ export default new Router({
         {
           path: "/products",
           name: "products",
-          redirect: '/products/list',
+          redirect: "/products/list",
           component: () => import("@/pages/product"),
           children: [
             {
@@ -42,8 +44,7 @@ export default new Router({
               path: "order",
               name: "order",
               component: () => import("@/pages/product/order")
-            },
-
+            }
           ]
         },
         {
@@ -55,14 +56,13 @@ export default new Router({
           path: "/contact",
           name: "contact",
           component: contact
-        },
-        {
-          path: "*",
-          name: "404",
-          component: () => import("@/pages/notFound.vue")
         }
-
       ]
+    },
+    {
+      path: "*",
+      name: "404",
+      component: () => import("@/pages/notFound.vue")
     }
   ]
 });

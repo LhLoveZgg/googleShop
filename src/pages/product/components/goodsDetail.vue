@@ -3,37 +3,39 @@
     <h2>Product Detail</h2>
     <div>
       <div class="picView">
-        <div class="picWrap" ref="imgWrap">
-          <img
-            :src="current.img"
-            ref="img"
-            @mousemove="imgZoom"
-            @mouseout="imgReset"
-          />
-        </div>
-        <div class="thumblist">
-          <div
-            class="thumb"
-            :class="{ active: i === current.index }"
-            @mouseover="
-              current.img = v;
-              current.index = i;
-            "
-            v-for="(v, i) in imgs"
-            :key="i"
-          >
-            <img :src="v" />
+        <div>
+          <div class="picWrap" ref="imgWrap">
+            <img
+              :src="current.img"
+              ref="img"
+              @mousemove="imgZoom"
+              @mouseout="imgReset"
+            />
           </div>
-        </div>
-        <div class="shareThis">
-          <span>Share to:</span>
-          <ul>
-            <li
-              v-for="(item, index) in shareThis"
-              :key="index"
-              :class="item"
-            ></li>
-          </ul>
+          <div class="thumblist" v-if="clentWidth > 990">
+            <div
+              class="thumb"
+              :class="{ active: i === current.index }"
+              @mouseover="
+                current.img = v;
+                current.index = i;
+              "
+              v-for="(v, i) in imgs"
+              :key="i"
+            >
+              <img :src="v" />
+            </div>
+          </div>
+          <div class="shareThis">
+            <span>Share to:</span>
+            <ul>
+              <li
+                v-for="(item, index) in shareThis"
+                :key="index"
+                :class="item"
+              ></li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="deal">
@@ -76,7 +78,8 @@ export default {
         img: "",
         index: 0
       },
-      quantity: 0
+      quantity: 0,
+      clentWidth: 0
     };
   },
   mounted() {
@@ -84,6 +87,10 @@ export default {
       img: this.imgs[0],
       index: 0
     };
+    window.addEventListener("resize", this.windowResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.windowResize);
   },
   methods: {
     imgZoom(e) {
@@ -95,6 +102,9 @@ export default {
     imgReset() {
       this.$refs.img.style.transform = "scale(1)";
       this.$refs.img.style.transformOrigin = "center";
+    },
+    windowResize() {
+      this.clentWidth = document.body.clientWidth;
     }
   }
 };
@@ -102,6 +112,7 @@ export default {
 
 <style lang="less">
 .goodsDetail {
+  border-bottom: 1px solid #dfdfdf;
   h2 {
     font-family: Open Sans;
     font-size: 24px;
@@ -114,6 +125,7 @@ export default {
   }
   & > div {
     display: flex;
+
     & > div:first-child {
       flex: 58;
     }
@@ -134,6 +146,7 @@ export default {
         margin-bottom: 5px;
         line-height: 19.6px;
         font-family: Open Sans;
+        margin-bottom: 10px;
       }
 
       & > .count {
@@ -158,6 +171,7 @@ export default {
             height: 25px;
             border: 1px solid #adadad;
             margin: 0 4px;
+            text-align: center;
           }
           .sub {
             background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpDMTEwNkIxRDBBRDFFNDExQTZCQ0ZBQ0U0ODczRTlGNCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFRTdDODczRkQxMEUxMUU0QUFBM0UxMzU1RTJCMDVGNiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFRTdDODczRUQxMEUxMUU0QUFBM0UxMzU1RTJCMDVGNiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkMxMTA2QjFEMEFEMUU0MTFBNkJDRkFDRTQ4NzNFOUY0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkMxMTA2QjFEMEFEMUU0MTFBNkJDRkFDRTQ4NzNFOUY0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+htVHtgAAAE1JREFUeNpi/P//PwMlgImBQjBqAAMDC4gwMTGRAFIcIPaZM2ceENIEVK8AZT5jgTJWALE9VJIUBxjCDFgDxBfI8MFrxtGENBwMAAgwAMGrD9xuXht6AAAAAElFTkSuQmCC)
@@ -281,12 +295,29 @@ export default {
       }
     }
   }
+
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
   input[type="number"] {
     -moz-appearance: textfield;
+  }
+}
+@media (max-width: 569px) {
+  .goodsDetail {
+    & > div {
+      flex-wrap: wrap;
+      & > div:first-child {
+        flex: 1;
+      }
+      & > div:last-child {
+        flex: 1;
+      }
+      .picView {
+        margin: 0 auto;
+      }
+    }
   }
 }
 </style>
