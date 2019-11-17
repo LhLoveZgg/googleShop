@@ -9,10 +9,12 @@ import layout from "@/layout";
 Vue.use(Router);
 
 export default new Router({
-  routes: [{
-      path: '/',
+  routes: [
+    {
+      path: "/",
       component: layout,
-      children: [{
+      children: [
+        {
           path: "/",
           name: "index",
           component: index
@@ -25,7 +27,25 @@ export default new Router({
         {
           path: "/products",
           name: "products",
-          component: () => import("@/pages/product")
+          redirect: "/products/list",
+          component: () => import("@/pages/product"),
+          children: [
+            {
+              path: "list/:id?",
+              name: "list",
+              component: () => import("@/pages/product/list")
+            },
+            {
+              path: "detail/:id",
+              name: "detail",
+              component: () => import("@/pages/product/detail")
+            },
+            {
+              path: "order",
+              name: "order",
+              component: () => import("@/pages/product/order")
+            }
+          ]
         },
         {
           path: "/about",
@@ -36,14 +56,13 @@ export default new Router({
           path: "/contact",
           name: "contact",
           component: contact
-        },
-        {
-          path: "*",
-          name: "404",
-          component: () => import("@/pages/notFound.vue")
         }
-
       ]
+    },
+    {
+      path: "*",
+      name: "404",
+      component: () => import("@/pages/notFound.vue")
     }
   ]
 });

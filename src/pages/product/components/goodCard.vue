@@ -1,24 +1,29 @@
 @<template>
   <div class="goodItem">
     <div class="prodlist-display">
-      <div class="prodlist-inner">
+      <div class="prodlist-inner" @click="$router.push(`/products/detail/${info.id}`)">
         <div class="prodlist-picbox">
           <div class="prodlist-cell">
-            <a href="javascript:void(0)" title="Double Cone Powder Mixer blender"></a>
+            <a href="javascript:void(0)" :title="info.title"></a>
             <img src="../../../assets/images/goods/goods.jpg" alt />
           </div>
         </div>
       </div>
     </div>
-    <div class="prodlist-special"></div>
+    <div class="prodlist-special" v-if="info.status">
+      <span class="hot" v-show="info.status === 'hot'"></span>
+      <span class="new" v-show="info.status === 'new'"></span>
+      <span class="good" v-show="info.status === 'good'"></span>
+    </div>
     <div class="prodlist-parameter-wrap">
       <div class="prodlist-parameter-inner">
         <a
           href="javascript:void(0)"
           class="prodlist-pro-name"
-          title="Double Cone Powder Mixer blender"
+          :title="info.title"
+          @click="$router.push(`/products/detail/${info.id}`)"
           style="height: 37px; line-height: 1.5em;"
-        >Double Cone Powder Mixer blender</a>
+        >{{info.title}}</a>
         <dl class="prodlist-defined-list"></dl>
         <dl class="prodlist-defined-list"></dl>
         <div class="prodlist-parameter-btns prodlist-btn-default">
@@ -36,7 +41,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    info: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
+  }
+};
 </script>
 
 <style lang="less">
@@ -44,8 +58,8 @@ export default {};
   padding: 4px;
   border: 1px solid #dcdcdc;
   max-width: 210px;
+  position: relative;
   .prodlist-display {
-    width: 200px;
     height: 200px;
     margin: 0 auto;
     cursor: pointer;
@@ -101,6 +115,27 @@ export default {};
           }
         }
       }
+    }
+  }
+  .prodlist-special {
+    position: absolute;
+    top: 10px;
+    right: -4px;
+    span {
+      display: block;
+      width: 27px;
+      height: 29px;
+      margin-bottom: 4px;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAABrCAMAAACxKAmmAAAAk1BMVEUAAAAAAgAAAgAAAgAAAgD6UlJ5vkpKnL7////3+/b9qam836Wr1o7+1NTe79KBwlX7fX2bznf+6urv9+nm895zs838k5P/9fX8iIij0oP7c3Pl8fb+39+EvNOSymyKxmH6XV3N57zO5O672uew1OOYx9r9ycnV68dXpMP9tLT7aGh9udFnrMj9v7/F47D8np6025mp+NmgAAAABXRSTlMATBQ/K/zkOeQAAAGCSURBVEjH7dTZjoMgFAbg2aA/IOKutU5tp/s27fs/3RxMEzVRk5mLtknnv0DxAw8Gw8tf8jFgr+9vL7w/T2FwqRmjy3zA51yFXeZAzDl3N3S3ccxU0dWhsVNrKlIoeahKEX2L0AcvqYgjDBnNMDQR43loqOoUPo2godyaUFzBoYdVaJCgrjDWDHxuhAAHVfKnPIwiH5Hi1nyUVJNKiGh8gcNdOAbCVDa2X2dcxcs5IrtA6ruXR9yHW9p/fn9OsP48iUFSk+D6cCbz2nJ41Mrgah5mtWVVR2s2S9bJbK8ha5OQlFTmabBL9T4IktrWqda6QLamt55TpiWrLdhVVXJI+36GpGFV5wxmTRc58tq8apmngqVFJpF5yBqmbbuTzDuhSNg+wKPuw+3sSfM2YK8fA2bPiVF/7msLLPpsCyDusXjAlmTHbrPTRHe9WJAtO20Fm9Un5bBtWTxBI5OWtQiiZS2axP2GzwE79NtqNFBvwJb99jVq21cTj23bNnBxr/9sID/jnENRovkLmAAAAABJRU5ErkJggg==);
+    }
+    .hot {
+      background-position: 0 -39px;
+    }
+    .new {
+      background-position: 0 0;
+    }
+    .good {
+      background-position: 0 -78px;
     }
   }
   .prodlist-parameter-wrap {
