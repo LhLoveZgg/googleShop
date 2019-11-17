@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="btns">
-          <button class="inquire">Inquire</button>
+          <button class="inquire" @click="$router.push('/products/order')">Inquire</button>
           <button class="addToBasket">Add to Basket</button>
         </div>
       </div>
