@@ -512,6 +512,7 @@ export default {
           cursor: pointer;
           .tabItem {
             padding: 0 50px 0 20px;
+            z-index: 99999999999;
           }
           .angle {
             width: 50px;
@@ -562,6 +563,7 @@ export default {
         width: 100%;
         opacity: 1;
         transition: all 0.5s ease;
+        z-index: 9999;
       }
     }
     .search {
