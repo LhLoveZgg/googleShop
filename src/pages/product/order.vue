@@ -2,7 +2,7 @@
   <div class="goodsOrder container">
     <el-row :gutter="20">
       <el-col :md="18">
-        <h3>Product Inquire</h3>
+        <h3 class="moduleTitle">Product Inquire</h3>
         <div class="cart">
           <table>
             <thead>
@@ -74,7 +74,7 @@
           </el-row>
           <el-button class="submit">Submit</el-button>
         </div>
-        <h3>You May Also Be Interested</h3>
+        <h3 class="moduleTitle">You May Also Be Interested</h3>
       </el-col>
       <el-col :md="6">
         <flodMenu style="marginBottom:40px" :list="products" :color="'#16376c'">
@@ -131,7 +131,7 @@ export default {
 
 <style lang="less">
 .goodsOrder {
-  h3 {
+  h3.moduleTitle {
     line-height: 58px;
     font-size: 24px;
     color: #333;

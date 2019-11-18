@@ -3,6 +3,7 @@
     <zjw-header />
     <div class="main">
       <zjw-tips></zjw-tips>
+      <inquireCart />
       <router-view />
     </div>
     
@@ -14,11 +15,13 @@
 import zjwHeader from "@/components/header/header";
 import zjwFooter from "@/components/footer/footer";
 import zjwTips from "@/components/tips/tips";
+import inquireCart from '@/components/inquireCart'
 export default {
   components: {
     zjwHeader,
     zjwFooter,
-    zjwTips
+    zjwTips,
+    inquireCart
   }
 };
 </script>
