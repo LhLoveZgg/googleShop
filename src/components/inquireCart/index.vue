@@ -1,22 +1,40 @@
 @<template>
-  <div class="inquireCart" ref="cartWrap" @click="open">
+  <div
+    class="inquireCart"
+    ref="cartWrap"
+    @click="open"
+    v-if="(basket.length || basketStatus) && $route.name !== 'order'"
+  >
     <i class="icon-cart" ref="iconCart"></i>
     <div
       class="inquire-basket-listwrap"
       ref="basketWrap"
-      :style="`height: ${basketStatus ? 276 : 0}px;`"
+      :style="`transform: translateY(${basketStatus ? 0 : 276}px);`"
     >
       <div class="basket-title" @click="close">
         <i class="basket-title-thumb"></i>
         Inquire Basket (
-        <span class="basket-title-pronum">1</span>)
+        <span class="basket-title-pronum">{{
+          basket.length
+        }}</span
+        >)
       </div>
       <div class="content">
-        <div></div>
+        <ul>
+          <li v-for="item in basket" :key="item.id">
+            <div>
+              <img :src="item.img" alt="" />
+            </div>
+            <div>
+              <a href="javascript: void(0)">{{ item.name }}</a>
+              <a href="javascript: void(0)">Delete</a>
+            </div>
+          </li>
+        </ul>
       </div>
       <div class="deal">
-        <button>Empty</button>
-        <button>Inquire</button>
+        <button @click="clear">Empty</button>
+        <button @click="toOrder">Inquire</button>
       </div>
     </div>
   </div>
@@ -29,6 +47,11 @@ export default {
       basketStatus: false
     };
   },
+  computed: {
+    basket() {
+      return this.$store.getters.basket;
+    }
+  },
   methods: {
     open(e) {
       if (
@@ -40,6 +63,12 @@ export default {
     },
     close() {
       this.basketStatus = false;
+    },
+    toOrder() {
+      this.$router.push("/products/order")
+    },
+    clear() {
+      this.$store.commit("inquire/CLEAR");
     }
   }
 };
@@ -79,7 +108,7 @@ export default {
     border: 1px solid #aaa;
     box-shadow: 0 0 8px #999;
     cursor: default;
-    transition: height 0.3s;
+    transition: transform 0.3s;
     .basket-title {
       position: absolute;
       top: 0;
@@ -111,9 +140,42 @@ export default {
       width: 100%;
       box-sizing: border-box;
       padding: 36px 0 44px;
-      & > div {
+      & > ul {
         height: 100%;
         overflow: auto;
+        li {
+          border-bottom: 1px solid #e8e8e8;
+          padding: 8px 0;
+          line-height: 16px;
+          &:hover {
+            background-color: #fffeee;
+          }
+          display: flex;
+          & > div:first-child {
+            margin-left: 10px;
+          }
+          & > div:last-child {
+            margin-left: 10px;
+            text-align: left;
+            a{
+              display: inline-block;
+            }
+            a:first-child {
+              width: 140px;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              color: #246bb3;
+              font-size: 12px;
+              text-decoration: none;
+            }
+            a:last-child {
+              margin-top: 8px;
+              color: #888;
+              font-size: 12px;
+            }
+          }
+        }
       }
     }
     .deal {

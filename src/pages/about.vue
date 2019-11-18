@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-    <zjw-crumbs></zjw-crumbs>
     <div class="info">
       <div class="container">
         <div class="left col-md-6">
@@ -130,12 +129,10 @@
 
 <script>
 import zjwHeader from "@/components/header/header";
-import zjwCrumbs from "@/components/crumbs/crumbs";
 import zjwFooter from "@/components/footer/footer";
 export default {
   components: {
     zjwHeader,
-    zjwCrumbs,
     zjwFooter
   },
   data() {

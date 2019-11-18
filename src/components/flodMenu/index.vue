@@ -12,7 +12,7 @@
         class="cell"
         v-for="item in list"
         :key="item.path"
-        @click="$router.push(item.path)"
+        @click="goto(item)"
       >
         {{ item.label }}
       </li>
@@ -48,6 +48,10 @@ export default {
     },
     transitionend() {
       this.flag = true;
+    },
+    goto(item){
+      if(this.$route.fullPath === item.path) return
+      this.$router.push(item.path)
     }
   },
   watch: {

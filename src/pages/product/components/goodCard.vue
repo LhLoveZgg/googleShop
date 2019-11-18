@@ -1,7 +1,10 @@
 @<template>
   <div class="goodItem">
     <div class="prodlist-display">
-      <div class="prodlist-inner" @click="$router.push(`/products/detail/${info.id}`)">
+      <div
+        class="prodlist-inner"
+        @click="$router.push(`/products/detail/${info.id}`)"
+      >
         <div class="prodlist-picbox">
           <div class="prodlist-cell">
             <a href="javascript:void(0)" :title="info.title"></a>
@@ -23,14 +26,18 @@
           :title="info.title"
           @click="$router.push(`/products/detail/${info.id}`)"
           style="height: 37px; line-height: 1.5em;"
-        >{{info.title}}</a>
+          >{{ info.title }}</a
+        >
         <dl class="prodlist-defined-list"></dl>
         <dl class="prodlist-defined-list"></dl>
         <div class="prodlist-parameter-btns prodlist-btn-default">
-          <button prodid="hNpAMBYWlzhE" class="default-button prodlist-pro-inquire">
+          <button
+            prodid="hNpAMBYWlzhE"
+            class="default-button prodlist-pro-inquire"
+          >
             <i class="togetherClass icon-mail" aria-hidden="true"></i>Inquire
           </button>
-          <a href="javascript:void(0);">
+          <a href="javascript:void(0);" @click="addToBasket(info)">
             <i class="icon-cart" aria-hidden="true"></i>
             <span>Add to Basket</span>
           </a>
@@ -48,6 +55,12 @@ export default {
       default() {
         return {};
       }
+    }
+  },
+  methods: {
+    addToBasket(info) {
+      info = Object.assign(info, { name: info.title });
+      this.$store.commit("inquire/UPDATE_INQUIRE", info);
     }
   }
 };

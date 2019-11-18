@@ -1,6 +1,7 @@
 @<template>
   <div>
     <zjw-header />
+    <crumbs />
     <div class="main">
       <zjw-tips></zjw-tips>
       <inquireCart />
@@ -13,6 +14,7 @@
 
 <script>
 import zjwHeader from "@/components/header/header";
+import crumbs from '@/components/crumbs/crumbs'
 import zjwFooter from "@/components/footer/footer";
 import zjwTips from "@/components/tips/tips";
 import inquireCart from '@/components/inquireCart'
@@ -21,7 +23,8 @@ export default {
     zjwHeader,
     zjwFooter,
     zjwTips,
-    inquireCart
+    inquireCart,
+    crumbs
   }
 };
 </script>

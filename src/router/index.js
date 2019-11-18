@@ -22,6 +22,9 @@ export default new Router({
         {
           path: "/news",
           name: "news",
+          meta: {
+            title: 'News'
+          },
           component: news
         },
         {
@@ -33,6 +36,9 @@ export default new Router({
             {
               path: "list/:id?",
               name: "list",
+              meta: {
+                title: 'Products'
+              },
               component: () => import("@/pages/product/list")
             },
             {
@@ -50,11 +56,17 @@ export default new Router({
         {
           path: "/about",
           name: "about",
+          meta:{
+            title: 'About Us'
+          },
           component: about
         },
         {
           path: "/contact",
           name: "contact",
+          meta: {
+            title: 'Contact Us'
+          },
           component: contact
         }
       ]

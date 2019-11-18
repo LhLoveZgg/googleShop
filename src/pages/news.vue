@@ -1,6 +1,5 @@
 <template>
   <div class="news">
-    <zjw-crumbs></zjw-crumbs>
 
     <el-row tag="section" class="container products">
       <el-col :md="6" :sm="24" :xs="24" tag="aside">
@@ -22,7 +21,6 @@
 
 <script>
 import zjwHeader from "@/components/header/header";
-import zjwCrumbs from "@/components/crumbs/crumbs";
 import zjwFooter from "@/components/footer/footer";
 import flodMenu from "@/components/flodMenu";
 import contactUsAside from "@/components/contactUs";
@@ -31,7 +29,6 @@ import { Row, Col, Pagination } from "element-ui";
 export default {
   components: {
     zjwHeader,
-    zjwCrumbs,
     zjwFooter,
     flodMenu,
     contactUsAside,

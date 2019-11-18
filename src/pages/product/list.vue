@@ -42,72 +42,72 @@ export default {
       list: [
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331",
+          id: "1",
           status: 'new'
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331",
+          id: "2",
           status: 'good'
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331",
+          id: "3",
           status: 'hot'
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331",
+          id: "4",
           status: 'good'
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331",
+          id: "5",
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331",
+          id: "6",
           status: 'new'
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "7"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331",
+          id: "8",
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "9"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "10"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "11"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "12"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "13"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "14"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "15"
         },
         {
           title: "Double Cone Powder Mixer blender",
-          id: "12331"
+          id: "16"
         }
       ],
       pageInfo: {
